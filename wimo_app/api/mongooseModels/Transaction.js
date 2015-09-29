@@ -1,14 +1,15 @@
 
+
 module.exports = {
 
 	attributes: {
 		eRetailerId: {
-			type: DB.schema.ObjectId,
-			ref: DB.ERetailer
+			type: DB.mongoose.Schema.ObjectId,
+			ref: 'ERetailer'
 		},
 		CourierId: {
-			type: DB.ObjectId,
-			ref: DB.Courier
+			type: DB.mongoose.Schema.ObjectId,
+			ref: 'Courier'
 		},
 		weight: {
 			value: Number,
