@@ -28,12 +28,12 @@ module.exports = {
 				height: Number
 			},
 			couriers: [{
-				type: mongoose.Schema.ObjectId
-				ref: db.Courier,
+				type: DB.ObjectId,
+				ref: DB.Courier
 			}],
 			//for courier user details 
 			perCourierInfo: [{
-				courierId: mongoose.Schema.ObjectId,
+				courierId: DB.ObjectId,
 				//type admin can choose between [ percentage , fixed amount of cash] 
 				markup: {
 					category: {
@@ -48,7 +48,7 @@ module.exports = {
 			}],
 			//different type of API keys ( production , development ) 
 			apiKeys: [{
-				type: mongoose.Schema.ObjectId
-				ref: db.ApiKey
+				type: DB.ObjectId,
+				ref: DB.ApiKey
 			}]
 		}

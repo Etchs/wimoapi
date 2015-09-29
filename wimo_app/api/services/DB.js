@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var glob = require("glob");
 var path = require('path');
 
-mongoose.connect('mongodb://username:password@localhost/dbname');
+mongoose.connect('mongodb://localhost/wimo');
 
 /**
 * We check if the connection is ok
@@ -41,6 +41,7 @@ console.log('iterate model');
 }
 
 function createMongooseModel(schema_description, model_name) {
+	console.log(schema_description.attributes);
 	 var schema = new mongoose.Schema(schema_description.attributes);
 	 if (schema_description.methods)
 	 	schema.methods = schema_description.methods;

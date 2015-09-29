@@ -11,8 +11,8 @@ module.exports = {
 			enum: [‘public’, ‘private’, ‘testing’, ‘production’]
 		},
 		eRetailerId: {
-			type: mongoose.Schema.ObjectId
-			ref: db.ERetailer
+			type: DB.ObjectId,
+			ref: DB.ERetailer
 		}
 	}
 }

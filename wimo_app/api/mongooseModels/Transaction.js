@@ -2,20 +2,21 @@ module.exports = {
 
 	attributes: {
 		eRetailerId: {
-			type: mongoose.Schema.ObjectId
-			ref: db.ERetailer
+			type: DB.ObjectId,
+			ref: DB.ERetailer
 		},
 		CourierId: {
-			type: mongoose.Schema.ObjectId
-			ref: db.Courier
+			type: DB.ObjectId,
+			ref: DB.Courier
 		},
 		weight: {
 			value: Number,
 			Unit: String
 		},
-		Status: Mobile: String
-		Date: Date
-		Income: Number
+		Status: String,
+		Mobile: String,
+		Date: Date,
+		Income: Number,
 		Payment: String
 
 	}
