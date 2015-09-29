@@ -1,4 +1,4 @@
-var mongoose = require('../services/DB.js'); 
+var DB = require('../services/DB.js'); 
 module.exports = {
 
 		attributes: {
@@ -29,12 +29,12 @@ module.exports = {
 				height: Number
 			},
 			couriers: [{
-				type: DB.ObjectId,
-				ref: DB.Courier
+				type: DB.mongoose.Schema.ObjectId,
+				ref: 'Courier'
 			}],
 			//for courier user details 
 			perCourierInfo: [{
-				courierId: DB.ObjectId,
+				courierId: DB.mongoose.Schema.ObjectId,
 				//type admin can choose between [ percentage , fixed amount of cash] 
 				markup: {
 					category: {
@@ -42,14 +42,16 @@ module.exports = {
 						enum: ['percent', 'AED']
 					},
 					value: Number
-				}
+				},
 				userName: String,
 				password: String, // hashstring
 				token: String
 			}],
 			//different type of API keys ( production , development ) 
 			apiKeys: [{
-				type: DB.ObjectId,
-				ref: DB.ApiKey
+				type: DB.mongoose.Schema.ObjectId,
+				ref: 'ApiKey'
 			}]
 		}
+
+	}

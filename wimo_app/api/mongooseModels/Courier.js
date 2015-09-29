@@ -1,5 +1,5 @@
 module.exports = {
-attributes: {
+	attributes: {
 		name: String,
 		logo: {
 			data: Buffer,

@@ -24,6 +24,7 @@
     "rc": "~0.5.0",
     "sails": "~0.11.2",
     "sails-disk": "~0.10.0",
+    "sails-mongo": "^0.11.4",
     "waterlock": "^0.1.0",
     "waterlock-local-auth": "0.0.6"
   },

@@ -13,7 +13,7 @@ var db = mongoose.connection;
 var models = {};
 
 models.Mixed = mongoose.Schema.Mixed;
-models.schema = mongoose.Schema;
+models.mongoose = mongoose;
 models.ObjectId = mongoose.Schema.ObjectId;
 
 console.log('Try to connect to MongoDB via Mongoose ...');
@@ -45,8 +45,6 @@ console.log('iterate model');
 }
 
 function createMongooseModel(schema_description, model_name) {
-console.dir(mongoose.Schema.ObjectId);
-	console.dir(schema_description.attributes.eRetailerId);
 	 var schema = new mongoose.Schema(schema_description.attributes);
 	 if (schema_description.methods)
 	 	schema.methods = schema_description.methods;
@@ -63,5 +61,5 @@ console.dir(mongoose.Schema.ObjectId);
 // Expose Mixed type and ObjectId type for Models
 
 // Expose all models loaded
-console.log(models.ObjectId);
+
 module.exports = models;
