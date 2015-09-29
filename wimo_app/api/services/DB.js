@@ -12,6 +12,10 @@ mongoose.connect('mongodb://localhost/wimo');
 var db = mongoose.connection;
 var models = {};
 
+models.Mixed = mongoose.Schema.Mixed;
+models.schema = mongoose.Schema;
+models.ObjectId = mongoose.Schema.ObjectId;
+
 console.log('Try to connect to MongoDB via Mongoose ...');
 db.on('error', console.error.bind(console, 'Mongoose connection error:'));
 db.once('open', function callback() {
@@ -41,7 +45,8 @@ console.log('iterate model');
 }
 
 function createMongooseModel(schema_description, model_name) {
-	console.log(schema_description.attributes);
+console.dir(mongoose.Schema.ObjectId);
+	console.dir(schema_description.attributes.eRetailerId);
 	 var schema = new mongoose.Schema(schema_description.attributes);
 	 if (schema_description.methods)
 	 	schema.methods = schema_description.methods;
@@ -56,7 +61,7 @@ function createMongooseModel(schema_description, model_name) {
 };
 
 // Expose Mixed type and ObjectId type for Models
-models.Mixed = mongoose.Schema.Types.Mixed;
-models.ObjectId = mongoose.Schema.Types.ObjectId;
+
 // Expose all models loaded
+console.log(models.ObjectId);
 module.exports = models;

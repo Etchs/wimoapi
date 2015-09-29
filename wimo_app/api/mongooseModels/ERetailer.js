@@ -1,3 +1,4 @@
+var mongoose = require('../services/DB.js'); 
 module.exports = {
 
 		attributes: {

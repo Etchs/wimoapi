@@ -1,18 +1,12 @@
 module.exports = {
-
-	attributes: {
-		token: String,
-		expired: {
-			type: Boolean
-			default: false
+attributes: {
+		name: String,
+		logo: {
+			data: Buffer,
+			fileName: String,
+			width: Number,
+			height: Number
 		},
-		category: {
-			type: String,
-			enum: [‘public’, ‘private’, ‘testing’, ‘production’]
-		},
-		eRetailerId: {
-			type: DB.ObjectId,
-			ref: DB.ERetailer
-		}
+		rating: Number,
 	}
 }

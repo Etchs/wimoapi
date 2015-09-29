@@ -1,8 +1,9 @@
+
 module.exports = {
 
 	attributes: {
 		eRetailerId: {
-			type: DB.ObjectId,
+			type: DB.schema.ObjectId,
 			ref: DB.ERetailer
 		},
 		CourierId: {
