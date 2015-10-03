@@ -44,7 +44,7 @@ module.exports.waterlock = {
           vars:{}
         }
       },
-      createOnNotFound: true
+      createOnNotFound: false
     }
   ],
 
@@ -56,10 +56,10 @@ module.exports.waterlock = {
   jsonWebTokens:{
 
     // CHANGE THIS SECRET
-    secret: 'this is my secret',
+    secret: 'jk4&^$%$asdhkha><{DPK}{{"!#^@32gadsgha325',
     expiry:{
       unit: 'days',
-      length: '7'
+      length: '2'
     },
     audience: 'app name',
     subject: 'subject',

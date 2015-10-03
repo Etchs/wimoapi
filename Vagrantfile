@@ -10,6 +10,11 @@ $script = <<SCRIPT
 	yes | sudo apt-get install curl
 	yes | curl -sL https://deb.nodesource.com/setup | sudo bash -
 	yes | sudo apt-get install -y nodejs
+	yes | sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+	yes | echo "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+	yes | sudo apt-get update
+	yes | sudo apt-get install -y mongodb-org
+	yes | sudo service mongod start
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
