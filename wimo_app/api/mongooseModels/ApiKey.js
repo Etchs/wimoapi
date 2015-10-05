@@ -10,9 +10,9 @@ module.exports = {
 			type: String,
 			enum: ['public', 'private', 'testing', 'production']
 		},
-		eRetailerId: {
+		retailerId: {
 			type: DB.mongoose.Schema.ObjectId,
-			ref: 'ERetailer'
+			ref: 'Retailer'
 		}
 	}
 };

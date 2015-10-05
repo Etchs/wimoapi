@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,15 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+  
+  //-------------------------------- Retailer -----------------------------//
+  'post /retailer': 'RetailerController.create',
+  'put /retailer/:retailerId': 'RetailerController.update',
+  'get /retailer': 'RetailerController.find',
 
+  //-------------------------------- Courier -----------------------------//
+  'get /courier': 'CourierController.find',
+
+  //-------------------------------- Transaction -----------------------------//
+  'get /transaction': 'TransactionController.find'
 };
