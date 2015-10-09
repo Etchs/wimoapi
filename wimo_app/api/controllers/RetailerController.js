@@ -58,5 +58,12 @@ module.exports = {
 				res.ok(retailers);
 			}
 		});
+	},
+
+	regenerateApiKey: function(req, res) {
+		var apikey = req.body;
+		// TODO: findOne in the ApiKeys collection where id = apikey.id
+		// and update this record with a new token then return to the 
+		// frontend the updated apikey record
 	}
 };

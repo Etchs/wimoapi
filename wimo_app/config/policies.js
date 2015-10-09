@@ -48,4 +48,16 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+  CourierController: {
+    find: ['hasJsonWebToken']
+  },
+  RetailerController: {
+    create: ['hasJsonWebToken'],
+    update: ['hasJsonWebToken'],
+    find: ['hasJsonWebToken'],
+    regenerateApiKey: ['hasJsonWebToken']
+  },
+  TransactionController: {
+    find: ['hasJsonWebToken']
+  }
 };
