@@ -3,31 +3,30 @@
  */
 module.exports = {
 
-	find: function(quoteLogCriteria, callback) {
+	find: function(callback) {
 
-		QuoteLog.find(quoteLogCriteria).exec(function(err, quoteLogs) {
+    DB.Retailer.find().exec(function(err, retailers) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, retailers);
+      }
+    });
 
-			if (err) {
-				callback(err, null);
-			} else {
-				callback(null, quoteLogs);
-			}
+  },
 
-		});
-
-	},
-
-	create: function(quoteLog, callback) {
-		QuoteLog.create(quoteLog).exec(function(err, createdQuoteLog) {
-			if (err) {
-				callback(err, null);
-			} else {
-				callback(null, createdQuoteLog);
-			}
-		});
+  create: function(retailer, callback) {
+		console.log(retailer);
+    DB.Retailer.create(retailer).exec(function(err, createdRetialer) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, createdRetialer);
+      }
+    });
 
 
-	},
+  },
 
 	update: function(quoteLogCriteria, quoteLog, callback) {
 		QuoteLog.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {

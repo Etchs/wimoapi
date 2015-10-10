@@ -3,39 +3,40 @@
  */
 module.exports = {
 
-	find: function(quoteLogCriteria, callback) {
+  find: function(callback) {
+console.log("test");
+    DB.Courier.find().exec(function(err, Couriers) {
+      console.log(Couriers);
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, Couriers);
+      }
+    });
 
-		QuoteLog.find(quoteLogCriteria).exec(function(err, quoteLogs) {
+  },
 
-			if (err) {
-				callback(err, null);
-			} else {
-				callback(null, quoteLogs);
-			}
+  create: function(courier, callback) {
+    console.log("start cerate ");
+    DB.Courier.create(courier).exec(function(err, Courier) {
 
-		});
-
-	},
-
-	create: function(quoteLog, callback) {
-		QuoteLog.create(quoteLog).exec(function(err, createdQuoteLog) {
-			if (err) {
-				callback(err, null);
-			} else {
-				callback(null, createdQuoteLog);
-			}
-		});
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, Courier);
+      }
+    });
 
 
-	},
+  },
 
-	update: function(quoteLogCriteria, quoteLog, callback) {
-		QuoteLog.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
-			if (err) {
-				callback(err, null);
-			} else {
-				callback(null, updatedQuoteLogs);
-			}
-		});
-	},
+  update: function(quoteLogCriteria, quoteLog, callback) {
+    DB.Courier.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, updatedQuoteLogs);
+      }
+    });
+  },
 };

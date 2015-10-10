@@ -45,7 +45,7 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  
+
   //-------------------------------- Retailer -----------------------------//
   'post /retailer': 'RetailerController.create',
   'put /retailer/:retailerId': 'RetailerController.update',
@@ -54,6 +54,7 @@ module.exports.routes = {
 
   //-------------------------------- Courier -----------------------------//
   'get /courier': 'CourierController.find',
+  'post /courier': 'CourierController.create',
 
   //-------------------------------- Transaction -----------------------------//
   'get /transaction': 'TransactionController.find'
