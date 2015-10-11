@@ -18,7 +18,7 @@ module.exports = {
       var allParams = _.merge(params, req.query);
       var retailer = allParams.retailer;
       console.log(retailer);
-      var retailer = JSON.parse(retailer);
+      //var retailer = JSON.parse(retailer);
 
       console.log("------------------------------");
       var file = req.file('file');
@@ -102,3 +102,5 @@ module.exports = {
 
       });
     };
+
+}
