@@ -31,8 +31,8 @@ module.exports = {
 
   },
 
-  update: function(retailerCriteria, quoteLog, callback) {
-    DB.Retailer.update(retailerCriteria, quoteLog).exec(function(err, updatedRetailerLogs) {
+  update: function(retailerCriteria, updatedRetailerLog, callback) {
+    DB.Retailer.update(retailerCriteria, updatedRetailerLog).exec(function(err, updatedRetailerLogs) {
       if (err) {
         callback(err, null);
       } else {
