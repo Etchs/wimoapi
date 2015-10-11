@@ -25,8 +25,7 @@ module.exports = {
       address: String
     },
     category: {
-      type: String,
-      enum: ['E-Commerce', 'Super Market', 'Hyper Market']
+      type: String
     },
     logo: {
       data: Buffer,
@@ -44,8 +43,7 @@ module.exports = {
       //type admin can choose between [ percentage , fixed amount of cash]
       markup: {
         category: {
-          type: String,
-          enum: ['percent', 'AED']
+          type: String
         },
         value: Number
       },

@@ -17,17 +17,18 @@ module.exports = {
 
     var allParams = _.merge(params, req.query);
     var retailer = allParams.retailer;
-    console.log("test file");
-    console.log(req.file('file'));
+    console.log(retailer);
+    var retailer = JSON.parse(retailer);
+
     console.log("------------------------------");
     var file = req.file('file');
+    //get file
     if(file != null)
     {
-    console.log("photo here");
     logoData = new Buffer(file);
     logo = {
       data: logoData,
-      fileName: file.fileName
+      fileName: allParams.fileName
     };
     console.dir(logo);
     }

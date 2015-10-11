@@ -18,6 +18,7 @@ module.exports = {
   create: function(retailer, callback) {
     console.log("test retailer");
     console.log(retailer);
+    console.log(JSON.stringify("{retailerType: New,name : test,website:http://www.google.com,category:E-Commerce}"))
     retailer = new DB.Retailer(retailer);
     console.log("Test ddd");
     retailer.save(function(err, createdRetialer) {
