@@ -3,14 +3,14 @@
  */
 module.exports = {
 
-	find: function(quoteLogCriteria, callback) {
+	find: function(callback) {
 
-		QuoteLog.find(quoteLogCriteria).exec(function(err, quoteLogs) {
+		DB.Transaction.find().populate('Courier', 'Retailer').exec(function(err, Transactions) {
 
 			if (err) {
 				callback(err, null);
 			} else {
-				callback(null, quoteLogs);
+				callback(null, Transactions);
 			}
 
 		});

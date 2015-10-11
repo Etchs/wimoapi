@@ -54,7 +54,7 @@ module.exports.routes = {
 
   //-------------------------------- Courier -----------------------------//
   'get /courier': 'CourierController.find',
-  'post /courier': 'CourierController.create',
+
 
   //-------------------------------- Transaction -----------------------------//
   'get /transaction': 'TransactionController.find'

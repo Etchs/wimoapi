@@ -3,9 +3,9 @@
  */
 module.exports = {
 
-	find: function(callback) {
+  find: function(callback) {
 
-    DB.Retailer.find().exec(function(err, retailers) {
+    DB.Retailer.find(function(err, retailers) {
       if (err) {
         callback(err, null);
       } else {
@@ -16,8 +16,11 @@ module.exports = {
   },
 
   create: function(retailer, callback) {
-		console.log(retailer);
-    DB.Retailer.create(retailer).exec(function(err, createdRetialer) {
+    console.log("test retailer");
+    console.log(retailer);
+    retailer = new DB.Retailer(retailer);
+    console.log("Test ddd");
+    retailer.save(function(err, createdRetialer) {
       if (err) {
         callback(err, null);
       } else {
@@ -28,13 +31,13 @@ module.exports = {
 
   },
 
-	update: function(quoteLogCriteria, quoteLog, callback) {
-		QuoteLog.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
-			if (err) {
-				callback(err, null);
-			} else {
-				callback(null, updatedQuoteLogs);
-			}
-		});
-	},
+  update: function(quoteLogCriteria, quoteLog, callback) {
+    QuoteLog.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, updatedQuoteLogs);
+      }
+    });
+  },
 };

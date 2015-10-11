@@ -4,7 +4,6 @@
 module.exports = {
 
   find: function(callback) {
-console.log("test");
     DB.Courier.find().exec(function(err, Couriers) {
       console.log(Couriers);
       if (err) {
