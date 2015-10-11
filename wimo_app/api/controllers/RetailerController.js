@@ -16,9 +16,10 @@ module.exports = {
     _.merge(params, req.headers);
 
     var allParams = _.merge(params, req.query);
+    
     var retailer = allParams.retailer;
-    console.log(retailer);
-    //var retailer = JSON.parse(retailer);
+    console.dir(retailer);
+    var retailer = JSON.parse(retailer);
 
     console.log("------------------------------");
     var file = req.file('file');
@@ -29,7 +30,7 @@ module.exports = {
         data: logoData,
         fileName: allParams.fileName
       };
-      console.dir(logo);
+
     }
     // do what you want to file object
 
