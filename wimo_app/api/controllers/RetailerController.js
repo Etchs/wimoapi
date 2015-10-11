@@ -16,7 +16,7 @@ module.exports = {
     _.merge(params, req.headers);
 
     var allParams = _.merge(params, req.query);
-    
+
     var retailer = allParams.retailer;
     console.dir(retailer);
     var retailer = JSON.parse(retailer);
@@ -90,12 +90,12 @@ module.exports = {
     };
 
     RetailerService.findOne(retailerId, function(err, retailer) {
-      if (retaile.logo.data != null) {
+      if (retailer.logo.data != null) {
 
         res.writeHead(200, {
           'Content-Type': 'image/png'
         });
-        res.end(new Buffer(retaile.logo.data), 'binary');
+        res.end(new Buffer(retailer.logo.data), 'binary');
       } else {
         res.status(404) // HTTP status 404: NotFound
           .send('Not found');
