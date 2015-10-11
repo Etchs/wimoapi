@@ -52,7 +52,7 @@ module.exports = {
   },
 
   update: function(req, res) {
-    var retailerId = req.param('retailerId');
+    var retailerId = {_id : new DB.ObjectId(req.param('retailerId'))};
     var retailer = req.body;
     RetailerService.update(retailerId, retailer, function(err, updatedRetailer) {
       if (err) {
@@ -65,7 +65,7 @@ module.exports = {
 
   find: function(req, res) {
 
-    RetailerService.find(criteriaObject, function(err, retailers) {
+    RetailerService.find(function(err, retailers) {
       if (err) {
         res.serverError(err);
       } else {
