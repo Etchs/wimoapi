@@ -42,6 +42,11 @@ update: function(retailerCriteria, updatedRetailerLog, callback) {
   });
 },
 findOne: function(retailerCriteria, callback) {
+console.log(retailerCriteria);
+var retailerCriteria = {
+  _id: new DB.ObjectId(retailerCriteria)
+};
+console.log(retailerCriteria);
 
   DB.Retailer.findOne(retailerCriteria, function(err, retailer) {
       if (err) {

@@ -22,13 +22,15 @@ module.exports = {
     var retailer = JSON.parse(retailer);
 
     console.log("------------------------------");
-    var file = req.file('file');
+    var file = req.file('file')._files[0];
+    console.log("Test");
+    console.dir(file.stream._readableState.buffer);
     //get file
     if (file != null) {
-      logoData = new Buffer(file);
+      logoData = file.stream._readableState.buffer;
       retailer.logo = {
         data: logoData,
-        fileName: allParams.fileName
+        fileName: file.stream.filename
       };
 
     }
@@ -85,11 +87,13 @@ module.exports = {
   },
 
   getPhoto: function(req, res) {
-    var retailerId = {
-      _id: new DB.ObjectId(req.param('retailerId'))
-    };
+    console.log(req.param('retailerId'));
 
-    RetailerService.findOne(retailerId, function(err, retailer) {
+
+    RetailerService.findOne(req.param('retailerId'), function(err, retailer) {
+      console.log(err);
+      console.log(retailer);
+
       if (retailer.logo.data != null) {
 
         res.writeHead(200, {

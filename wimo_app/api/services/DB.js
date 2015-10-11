@@ -14,7 +14,7 @@ var models = {};
 
 models.Mixed = mongoose.Schema.Mixed;
 models.mongoose = mongoose;
-models.ObjectId = mongoose.Schema.ObjectId;
+models.ObjectId = mongoose.Types.ObjectId;
 
 console.log('Try to connect to MongoDB via Mongoose ...');
 db.on('error', console.error.bind(console, 'Mongoose connection error:'));
