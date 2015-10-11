@@ -31,12 +31,12 @@ module.exports = {
 
   },
 
-  update: function(quoteLogCriteria, quoteLog, callback) {
-    QuoteLog.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
+  update: function(retailerCriteria, quoteLog, callback) {
+    DB.Retailer.update(retailerCriteria, quoteLog).exec(function(err, updatedRetailerLogs) {
       if (err) {
         callback(err, null);
       } else {
-        callback(null, updatedQuoteLogs);
+        callback(null, updatedRetailerLogs);
       }
     });
   },

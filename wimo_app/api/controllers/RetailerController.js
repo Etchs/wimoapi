@@ -54,7 +54,7 @@ module.exports = {
   update: function(req, res) {
     var retailerId = req.param('retailerId');
     var retailer = req.body;
-    VehicleService.update(retailerId, retailer, function(err, updatedRetailer) {
+    RetailerService.update(retailerId, retailer, function(err, updatedRetailer) {
       if (err) {
         res.serverError(err);
       } else {
@@ -64,7 +64,7 @@ module.exports = {
   },
 
   find: function(req, res) {
-    
+
     RetailerService.find(criteriaObject, function(err, retailers) {
       if (err) {
         res.serverError(err);
