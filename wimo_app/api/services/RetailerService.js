@@ -41,4 +41,18 @@ module.exports = {
       }
     });
   },
+  findOne: function(retailerCriteria, callback) {
+
+DB.Retailer.findOne(retailerCriteria,function(err,retailer){
+  if (err) {
+    callback(err, null);
+  } else {
+    callback(null, retailer);
+  }
+}
+});
+
+})
+
+}
 };
