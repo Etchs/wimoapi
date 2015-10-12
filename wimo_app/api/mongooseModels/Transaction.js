@@ -4,11 +4,11 @@ module.exports = {
 
 	attributes: {
 		retailerId: {
-			type: DB.mongoose.Schema.ObjectId,
+			type: DB.ObjectId,
 			ref: 'Retailer'
 		},
 		CourierId: {
-			type: DB.mongoose.Schema.ObjectId,
+			type: DB.ObjectId,
 			ref: 'Courier'
 		},
 		weight: {

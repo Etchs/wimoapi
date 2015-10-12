@@ -84,6 +84,7 @@ module.exports = {
     // TODO: findOne in the ApiKeys collection where id = apikey.id
     // and update this record with a new token then return to the
     // frontend the updated apikey record
+    
   },
 
   getPhoto: function(req, res) {
