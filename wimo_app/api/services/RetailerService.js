@@ -40,7 +40,7 @@ module.exports = {
   findOne: function(retailerCriteria, callback) {
     console.log(retailerCriteria);
     var retailerCriteria = {
-      _id: new DB.ObjectId(retailerCriteria)
+      _id: new DB.mongoose.Types.ObjectId(retailerCriteria)
     };
     console.log(retailerCriteria);
 

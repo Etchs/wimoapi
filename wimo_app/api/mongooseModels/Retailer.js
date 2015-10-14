@@ -10,9 +10,18 @@ module.exports = {
       type: String,
       required: true
     },
-    deliveries: Number,
-    shipped: Number,
-    totalIncome: Number,
+    deliveries: {
+      type: Number,
+      default: 0
+    },
+    shipped: {
+      type: Number,
+      default: 0
+    },
+    totalIncome: {
+      type: Number,
+      default: 0
+    },
     name: {
       type: String
     },

@@ -7,9 +7,21 @@ module.exports = {
       width: Number,
       height: Number
     },
-    deliveries: Number,
-    shipped: Number,
-    totalIncome: Number,
-    rating: Number,
+    deliveries: {
+      type: Number,
+      default: 0
+    },
+    shipped: {
+      type: Number,
+      default: 0
+    },
+    totalIncome: {
+      type: Number,
+      default: 0
+    },
+    rating: {
+      type: Number,
+      default: 0
+    },
   }
 }

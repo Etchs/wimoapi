@@ -1,36 +1,49 @@
 /**
- * CourierService
+ * ApiKeyService
  */
 module.exports = {
 
   find: function(callback) {
-    DB.Courier.find().exec(function(err, Couriers) {
-      console.log(Couriers);
+    DB.ApiKey.find().exec(function(err, ApiKeys) {
+      console.log(ApiKeys);
       if (err) {
         callback(err, null);
       } else {
-        callback(null, Couriers);
+        callback(null, ApiKeys);
       }
     });
 
   },
 
-  create: function(courier, callback) {
+  create: function(ApiKey, callback) {
     console.log("start cerate ");
-    DB.Courier.create(courier).exec(function(err, Courier) {
+    DB.ApiKey.create(ApiKey).exec(function(err, ApiKey) {
 
       if (err) {
         callback(err, null);
       } else {
-        callback(null, Courier);
+        callback(null, ApiKey);
       }
     });
 
 
   },
+    insert: function(ApiKeys, callback) {
+      console.log("start cerate ");
+      DB.ApiKey.collection.insert(ApiKeys,function(err, ApiKey) {
+
+        if (err) {
+          callback(err, null);
+        } else {
+          callback(null, ApiKey);
+        }
+      });
+
+
+    },
 
   update: function(quoteLogCriteria, quoteLog, callback) {
-    DB.Courier.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
+    DB.ApiKey.update(quoteLogCriteria, quoteLog).exec(function(err, updatedQuoteLogs) {
       if (err) {
         callback(err, null);
       } else {
