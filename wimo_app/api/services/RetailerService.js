@@ -5,7 +5,7 @@ module.exports = {
 
   find: function(callback) {
 
-    DB.Retailer.find().populate('couriers').exec(function(err, retailers) {
+    DB.Retailer.find().populate('couriers').populate('apiKeys').exec(function(err, retailers) {
       if (err) {
         callback(err, null);
       } else {

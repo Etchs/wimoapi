@@ -39,7 +39,7 @@ module.exports = {
     //generate rondom keys
     console.log(uid(64));
 if(req.file)
-{
+{var file = req.file('file')._files[0];
 
 
     req.file('file').upload(function(err, uploadedFiles) {

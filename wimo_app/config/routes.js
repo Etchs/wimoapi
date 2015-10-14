@@ -58,5 +58,6 @@ module.exports.routes = {
 
 
   //-------------------------------- Transaction -----------------------------//
-  'get /transaction': 'TransactionController.find'
+  'get /transaction': 'TransactionController.find',
+  'post /createRandom': 'TransactionController.createRandom'
 };
