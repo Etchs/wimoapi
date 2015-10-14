@@ -13,6 +13,8 @@ module.exports = {
       if (err) {
         res.serverError(err);
       } else {
+
+        console.dir(transactions);
         res.ok(transactions);
       }
     });

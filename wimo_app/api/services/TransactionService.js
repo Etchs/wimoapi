@@ -5,7 +5,7 @@ module.exports = {
 
 	find: function(callback) {
 
-		DB.Transaction.find().populate('CourierId', 'retailerId').exec(function(err, Transactions) {
+		DB.Transaction.find().populate('retailerId').populate('CourierId').exec(function(err, Transactions) {
 
 			if (err) {
 				callback(err, null);
