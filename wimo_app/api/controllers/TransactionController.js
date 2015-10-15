@@ -29,7 +29,7 @@ module.exports = {
 			res.serverError(err);
 		} else if (retailers && retailers.length > 0) {
 			async.eachSeries(retailers, function(retailer, callback) {
-				if (retailer.couriers) {
+				if (!_.isEmpty(retailer.couriers)) {
 					_.forEach(retailer.couriers, function(selectedCourier) {
 						var randomMobile = Math.floor( Math.random() * (20109999999 - 20100000000) + 20100000000 );
 						var weightValue = Math.random() * 100;
@@ -38,7 +38,7 @@ module.exports = {
 						var courierInfo = _.findWhere(retailer.perCourierInfo, {courierId: selectedCourier._id});
 						if(courierInfo && courierInfo.markup){
 				          if(courierInfo.markup.category && courierInfo.markup.value){
-				            if(courierInfo.markup.category == 'percent'){
+				            if(courierInfo.markup.category != 'percent'){
 				            	incomeValue = courierInfo.markup.value;
 				            }
 				          }
