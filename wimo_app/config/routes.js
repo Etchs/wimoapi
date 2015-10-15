@@ -51,7 +51,8 @@ module.exports.routes = {
   'put /retailer/:retailerId': 'RetailerController.update',
   'post /retailer/:retailerId/apikey/regenerate': 'RetailerController.regenerateApiKey',
   'get /retailer': 'RetailerController.find',
-  'get /retailer/:retailerId': 'RetailerController.getPhoto',
+  'get /retailer/getPhoto/:retailerId': 'RetailerController.getPhoto',
+  'get /retailer/:retailerId': 'RetailerController.findOne',
 
   //-------------------------------- Courier -----------------------------//
   'get /courier': 'CourierController.find',

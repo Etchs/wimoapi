@@ -188,6 +188,19 @@ if(req.file)
 
   },
 
+  findOne: function(req, res) {
+    var retailerId = req.param('retailerId')
+    RetailerService.findOne(retailerId, function(err, retailer) {
+      if(err){
+        res.serverError(err);
+      } else if(!retailer) {
+        res.serverError('No retailer exisits with the given id: '+retailerId);
+      } else {
+        res.ok(retailer);
+      }
+    });
+  },
+
   getPhoto: function(req, res) {
     console.log(req.param('retailerId'));
 

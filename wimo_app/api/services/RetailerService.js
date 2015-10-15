@@ -44,12 +44,12 @@ module.exports = {
     };
     console.log(retailerCriteria);
 
-    DB.Retailer.findOne(retailerCriteria, function(err, retailer) {
+    DB.Retailer.findOne(retailerCriteria).populate('couriers').populate('apiKeys').exec(function(err, retailer) {
       if (err) {
         callback(err, null);
       } else {
         callback(null, retailer);
       }
-    })
+    });
   }
 };
