@@ -60,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |v|
     v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
 	#This option can be enabled if the vagrant will give "connection timeout, retrying" error, because it may be expecting a user input
-	v.gui = true
+	#v.gui = true
   end
   
   
