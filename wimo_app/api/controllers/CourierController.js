@@ -7,6 +7,7 @@
 var Promise = require('bluebird');
 var glob = Promise.promisify(require('glob'));
 var path = require('path');
+var async = require('async');
 var fs = require('fs');
 module.exports = {
 	/* e.g.
@@ -16,7 +17,7 @@ module.exports = {
 	*/
 
 	find: function(req, res) {
-	//	var criteriaObject = Utilities.getCriteriaObject(req.query);
+		//	var criteriaObject = Utilities.getCriteriaObject(req.query);
 		CourierService.find(function(err, couriers) {
 			if (err) {
 				res.serverError(err);
@@ -29,9 +30,10 @@ module.exports = {
 		glob("assets/images/*.gif")
 			.then(function(files) {
 
-				return _.each(files, function(file) {
+				async.each(files, function(file, callback) {
+
 					var filename = path.basename(file, '.gif');
-					return fs.readFile(file, function(err, data) {
+					fs.readFile(file, function(err, data) {
 						var logoData = data;
 						var courier = {
 							name: filename,
@@ -40,20 +42,27 @@ module.exports = {
 							data: logoData,
 							fileName: filename
 						};
-						return DB.Courier.create(courier).exec(function(err, createdCourier) {
+						var newCourier = new DB.Courier(courier);
+						newCourier.save(function(err, createdCourier) {
 							if (err) {
-								res.serverError(err);
+								callback(err);
 							} else {
-								var msg = 'creaded courier: ' + filename;
-								console.log(msg);
-								return msg;
+								console.log('creaded courier: ' + filename);
+								callback();
 							}
 						});
 					});
-					
+
+				}, function(err) {
+					// if any of the file processing produced an error, err would equal that error
+					if (err) {
+						res.serverError(err);
+					} else {
+						res.ok('All Couriers have been create successfully');
+					}
 				});
-			}).then(function(msg){
-				res.ok(msg);
+
+
 			})
 			.catch(console.error);
 	},
