@@ -38,44 +38,43 @@ module.exports = {
     var retailer = JSON.parse(retailer);
     //generate rondom keys
     console.log(uid(64));
-if(req.file)
-{var file = req.file('file')._files[0];
+    if (req.file) {
+      var file = req.file('file')._files[0];
 
 
-    req.file('file').upload(function(err, uploadedFiles) {
-      if (err) {
-        return res.json(500, err);
-      } else if (uploadedFiles.length === 0) {
-        // proceed without files
-      } else {
-        //  handle uploaded file
-        var fs = require('fs');
-        fs.readFile(uploadedFiles[0].fd, function(err, data) {
-          logoData = data;
-          retailer.logo = {
-            data: logoData,
-            fileName: file.stream.filename
-          };
+      req.file('file').upload(function(err, uploadedFiles) {
+        if (err) {
+          return res.json(500, err);
+        } else if (uploadedFiles.length === 0) {
+          // proceed without files
+        } else {
+          //  handle uploaded file
+          var fs = require('fs');
+          fs.readFile(uploadedFiles[0].fd, function(err, data) {
+            logoData = data;
+            retailer.logo = {
+              data: logoData,
+              fileName: file.stream.filename
+            };
 
-          RetailerService.create(retailer, function(err, createdRetailer) {
-            if (err) {
-              res.badRequest(err);
-            } else {
-              //add apikeys
-              testingApiKey = {
-                token: uid(64),
-                category : "testing",
-                retailerId : new DB.mongoose.Types.ObjectId(createdRetailer._id)
-              }
-              productionApiKey =
-              {
-                token: uid(64),
-                category : "testing",
-                retailerId : new DB.mongoose.Types.ObjectId(createdRetailer._id)
-              }
-              apiKeys = [testingApiKey,productionApiKey];
-              ApiKeyService.insert(apiKeys,function(err, docs) {
-                console.dir(docs);
+            RetailerService.create(retailer, function(err, createdRetailer) {
+              if (err) {
+                res.badRequest(err);
+              } else {
+                //add apikeys
+                testingApiKey = {
+                  token: uid(64),
+                  category: "testing",
+                  retailerId: new DB.mongoose.Types.ObjectId(createdRetailer._id)
+                }
+                productionApiKey = {
+                  token: uid(64),
+                  category: "testing",
+                  retailerId: new DB.mongoose.Types.ObjectId(createdRetailer._id)
+                }
+                apiKeys = [testingApiKey, productionApiKey];
+                ApiKeyService.insert(apiKeys, function(err, docs) {
+                  console.dir(docs);
                   //update with apikey ids
                   apiKeysIds = [];
                   console.log("new apiKeys")
@@ -84,7 +83,9 @@ if(req.file)
                     _id: new DB.mongoose.Types.ObjectId(createdRetailer._id)
                   };
 
-                  RetailerService.update(retailerId, {apiKeys:docs.insertedIds}, function(err, updatedRetailer) {
+                  RetailerService.update(retailerId, {
+                    apiKeys: docs.insertedIds
+                  }, function(err, updatedRetailer) {
                     if (err) {
                       res.serverError(err);
                     } else {
@@ -92,55 +93,56 @@ if(req.file)
                     }
                   });
 
-              })
+                })
 
-            }
+              }
+            });
           });
-        });
-      }
+        }
 
-    });
-}else{
-  RetailerService.create(retailer, function(err, createdRetailer) {
-    if (err) {
-      res.badRequest(err);
+      });
     } else {
-      //add apikeys
-      testingApiKey = {
-        token: uid(64),
-        category : "testing",
-        retailerId : new DB.mongoose.Types.ObjectId(createdRetailer._id)
-      }
-      productionApiKey =
-      {
-        token: uid(64),
-        category : "testing",
-        retailerId : new DB.mongoose.Types.ObjectId(createdRetailer._id)
-      }
-      apiKeys = [testingApiKey,productionApiKey];
-      ApiKeyService.insert(apiKeys,function(err, docs) {
-        console.dir(docs);
-          //update with apikey ids
-          apiKeysIds = [];
-          console.log("new apiKeys")
-          console.log(docs.insertedIds)
-          var retailerId = {
-            _id: new DB.mongoose.Types.ObjectId(createdRetailer._id)
-          };
+      RetailerService.create(retailer, function(err, createdRetailer) {
+        if (err) {
+          res.badRequest(err);
+        } else {
+          //add apikeys
+          testingApiKey = {
+            token: uid(64),
+            category: "testing",
+            retailerId: new DB.mongoose.Types.ObjectId(createdRetailer._id)
+          }
+          productionApiKey = {
+            token: uid(64),
+            category: "testing",
+            retailerId: new DB.mongoose.Types.ObjectId(createdRetailer._id)
+          }
+          apiKeys = [testingApiKey, productionApiKey];
+          ApiKeyService.insert(apiKeys, function(err, docs) {
+            console.dir(docs);
+            //update with apikey ids
+            apiKeysIds = [];
+            console.log("new apiKeys")
+            console.log(docs.insertedIds)
+            var retailerId = {
+              _id: new DB.mongoose.Types.ObjectId(createdRetailer._id)
+            };
 
-          RetailerService.update(retailerId, {apiKeys:docs.insertedIds}, function(err, updatedRetailer) {
-            if (err) {
-              res.serverError(err);
-            } else {
-              res.ok(updatedRetailer);
-            }
-          });
+            RetailerService.update(retailerId, {
+              apiKeys: docs.insertedIds
+            }, function(err, updatedRetailer) {
+              if (err) {
+                res.serverError(err);
+              } else {
+                res.ok(updatedRetailer);
+              }
+            });
 
-      })
+          })
 
+        }
+      });
     }
-  });
-}
     // do what you want to file object
 
     /* the way to save file to disk
@@ -191,10 +193,10 @@ if(req.file)
   findOne: function(req, res) {
     var retailerId = req.param('retailerId')
     RetailerService.findOne(retailerId, function(err, retailer) {
-      if(err){
+      if (err) {
         res.serverError(err);
-      } else if(!retailer) {
-        res.serverError('No retailer exisits with the given id: '+retailerId);
+      } else if (!retailer) {
+        res.serverError('No retailer exisits with the given id: ' + retailerId);
       } else {
         res.ok(retailer);
       }
