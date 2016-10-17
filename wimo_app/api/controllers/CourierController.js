@@ -25,7 +25,7 @@ module.exports = {
 			}
 		});
 	},
-	createRandom: function(courier, callback) {
+	createRandom: function(req, res) {
 		glob("assets/images/*.gif")
 			.then(function(files) {
 
