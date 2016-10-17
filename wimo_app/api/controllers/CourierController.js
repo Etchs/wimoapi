@@ -69,11 +69,11 @@ module.exports = {
 
 	getPhoto: function(req, res) {
 
-		DB.Courier.findOne(_id: new DB.mongoose.Types.ObjectId(req.param('courierId'))).exec(function(err, courier) {
+		DB.Courier.findOne({_id: new DB.mongoose.Types.ObjectId(req.param('courierId'))}).exec(function(err, courier) {
 			if (err) {
 				res.serverError(err);
-			} else if (courier != null) {
-				if (courier.logo.data != null) {
+			} else if (courier !== null) {
+				if (courier.logo.data !== null) {
 					res.writeHead(200, {
 						'Content-Type': 'image/png'
 					});
