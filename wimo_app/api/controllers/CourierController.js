@@ -66,4 +66,25 @@ module.exports = {
 			})
 			.catch(console.error);
 	},
+
+	getPhoto: function(req, res) {
+
+		DB.Courier.findOne(req.param('courierId')).exec(function(err, courier) {
+			if (err) {
+				res.serverError(err);
+			} else if (courier != null) {
+				if (courier.logo.data != null) {
+					res.writeHead(200, {
+						'Content-Type': 'image/png'
+					});
+					res.end(new Buffer(courier.logo.data), 'binary');
+				} else {
+					res.status(404).send('Not found');
+				}
+			} else {
+				res.status(404).send('Not found');
+			}
+		});
+		
+	}
 };

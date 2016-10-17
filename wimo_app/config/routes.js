@@ -56,6 +56,7 @@ module.exports.routes = {
 
   //-------------------------------- Courier -----------------------------//
   'get /courier': 'CourierController.find',
+  'get /courier/getPhoto/:courierId': 'CourierController.getPhoto',
   'post /randomcouriers': 'CourierController.createRandom',
 
 
