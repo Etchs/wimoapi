@@ -5,6 +5,7 @@
   "description": "WIMO application",
   "keywords": [],
   "dependencies": {
+    "async": "^2.1.2",
     "bluebird": "^3.4.6",
     "ejs": "~0.8.4",
     "fs": "0.0.1-security",
