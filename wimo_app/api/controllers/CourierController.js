@@ -29,9 +29,9 @@ module.exports = {
 		glob("assets/images/*.gif")
 			.then(function(files) {
 
-				_.each(files, function(file) {
+				return _.each(files, function(file) {
 					var filename = path.basename(file, '.gif');
-					fs.readFile(file, function(err, data) {
+					return fs.readFile(file, function(err, data) {
 						var logoData = data;
 						var courier = {
 							name: filename,
@@ -40,18 +40,20 @@ module.exports = {
 							data: logoData,
 							fileName: filename
 						};
-						DB.Courier.create(courier).exec(function(err, createdCourier) {
+						return DB.Courier.create(courier).exec(function(err, createdCourier) {
 							if (err) {
 								res.serverError(err);
 							} else {
-								console.log('creaded courier: ' + filename);
+								var msg = 'creaded courier: ' + filename;
+								console.log(msg);
+								return msg;
 							}
 						});
 					});
 					
 				});
-			}).then(function(){
-				res.ok('Created random couriers!');
+			}).then(function(msg){
+				res.ok(msg);
 			})
 			.catch(console.error);
 	},
